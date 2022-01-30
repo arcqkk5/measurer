@@ -1,5 +1,8 @@
 ## Measurer // project in native javascript
 
+## Technical specification
+https://github.com/arcqkk5/measurer/blob/main/Specification/TZ.docx
+
 ### About project
 
 1. Git clone
