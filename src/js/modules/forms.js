@@ -1,6 +1,10 @@
-const forms = () => {
+import changeNumInput from "./changeNumInput";
+
+const forms = (state) => {
   const form = document.querySelectorAll("form"),
     input = document.querySelectorAll("input");
+
+  changeNumInput('input[name="user_phone"]');
 
   const message = {
     loading: "Загрузка...",
@@ -33,8 +37,13 @@ const forms = () => {
       item.appendChild(statusMessage);
 
       const formDate = new FormData(item);
+      if (item.getAttribute("data-calc") === "end") {
+        for (let key in state) {
+          formDate.append(key, state[key]);
+        }
+      }
 
-      postDate("assets/server.php", formDate)
+      postDate("server.php", formDate)
         .then((res) => {
           console.log(res);
           statusMessage.textContent = message.success;
